@@ -10,28 +10,35 @@
 import java.util.Scanner;
 public class _6174{
     public static void main(String[] args){
-        int length,c=0;
+        int length=0,c=0;
         int input;
-        String n="";
+        String digit="";
+        System.out.println("Welcome to KAPREKAR'S Constant \n To start the program Enter a number that is 4 digit and isnt iterative like (1111,4444..)");
         //Input Handler
         do{ 
             if(c!=0){
-                n="again (must be 4 Digit!!)";
+                digit="again (must be 4 Digit) & None repetitive!!)";
             }
-            System.out.printf("Enter a number %s: ",n);
+            System.out.printf("Enter a number %s: ",digit);
             Scanner in = new Scanner(System.in);
             input = in.nextInt();
-            length=Integer.toString(input).length();
             c++;
+            if(input == 1111 || input==2222 || input==3333 || input==4444 || input==5555 || input==6666 || input==7777 || input==8888 || input==9999 || input==0000 ){
+                continue;
+            }
+            length=Integer.toString(input).length();
+            
         }while(length != 4 );
         
         //Start The calculation
         calc(input);
     }
+
+
     public static int calc(int input){
         int result=0, count=0;;
         int[] array=new int[4];
-        System.out.println("Given number is: "+input);
+        System.out.println("-----------------------\nGiven number is: "+input);
         //Separate int to Array 
         for(int i=0;i<4;i++){
             array[i]=(input%10);
@@ -59,7 +66,6 @@ public class _6174{
             less=less/10;
         }
         result=big-small;
-        //System.out.printf("%d \n%d \n----\n = %d\n" ,big,small,result);
         
         System.out.println("Order biggest = "+ big+"\nSmallest numebr ="+small+"\nAnd result is " +result+"\n-----------------------");
         while(result != 6174){
@@ -96,6 +102,7 @@ public class _6174{
 
         }
         
+        System.out.println("It took '"+(count+1)+"' times to get KAPREKAR'S Constant");
         return result;
     }
 
